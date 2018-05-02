@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DungeonCrawler:jar">
+    <output-path>$PROJECT_DIR$/classes/artifacts/DungeonCrawler_jar</output-path>
+    <root id="archive" name="DungeonCrawler.jar">
+      <element id="module-output" name="DungeonCrawler" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src" />
+    </root>
+  </artifact>
+</component>
