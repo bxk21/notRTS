@@ -82,17 +82,14 @@ Each Level uses their Random to generate doubles for each RNG call.
 
 Implemented arguments
 
---testing
+	--testing
+Enables info text in console
 
-	Enables info text in console
+	-s <seed>
+Sets a specific seed
 
--s <seed>
-
-	Sets a specific seed
-
--d <difficulty>
-
-	Sets a specific difficulty (default 2)
+	-d <difficulty>
+Sets a specific difficulty (default 2)
 
 Note: Map generation is affected by difficulty (it should probably be tied only to seed)
 
