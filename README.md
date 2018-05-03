@@ -5,6 +5,7 @@ During my Sophomore year in college, I was tasked to create a basic Android vide
 
 Because of my love of Starcraft, I’ve always wanted to build a game just like it, with every type of interaction one would find in such a game. So, I decided to create the underlying RTS engine I want as a proof-of-concept while building something relatively quick and playable on top. Because of that, there are actually way more features not explicitly used in the game that are hidden. I encourage you to look through the Classes and their Methods to see all they do.
 
+***
 ## Controls
 
 WASD to move
@@ -15,7 +16,7 @@ Left Mouse Button to fire a projectile (4 hits to kill)
  
 E to open a chest or use stairs.
 
-
+***
 ## Engine Features
 
 ### Command Pattern
@@ -50,7 +51,7 @@ Input is taken in and written to a hashMap, (and double[] for mouse location), s
  
 I wanted to write the A* search algorithm for the AI, but I didn’t have time. The surrounding code for it is written in: path following, periodic rechecking of path (for moving goals), etc.
 
-
+***
 ## Changelog
 
 ### 0.1
@@ -82,13 +83,16 @@ Each Level uses their Random to generate doubles for each RNG call.
 Implemented arguments
 
 --testing
-Enables info text in console
+
+	Enables info text in console
 
 -s <seed>
-Sets a specific seed
+
+	Sets a specific seed
 
 -d <difficulty>
-Sets a specific difficulty (default 2)
+
+	Sets a specific difficulty (default 2)
 
 Note: Map generation is affected by difficulty (it should probably be tied only to seed)
 
