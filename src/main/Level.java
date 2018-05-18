@@ -19,6 +19,8 @@ public class Level {
 	private int difficulty;
 	private int varSize;
 	private ArrayList<Entity> entities;
+	private EntityResource stairsDown;
+	private EntityResource stairsUp;
 	
 	public Level(int height, int width, int difficulty) {
 		this.difficulty = difficulty * Main.difficulty;
@@ -60,6 +62,15 @@ public class Level {
 		return seed.nextDouble();
 	}
 	
+	public Tile getStairsDown(){
+	    return stairsDown;
+    }
+    
+    public Tile getStairsUp(){
+	    return stairsUp;
+    }
+
+	
 	public Tile spaceAt(int x, int y){
 		return tiles[y][x];
 	}
@@ -67,10 +78,10 @@ public class Level {
 	/**
 	 * Sets the Start location of the player
 	 */
-	public void setStart(int xStart, int yStart) {
-		GameManager.getPlayer().setLocation(xStart + .5, yStart + .5);
-		
-	}
+//	public void setStart(int xStart, int yStart) {
+//		GameManager.getPlayer().setLocation(xStart + .5, yStart + .5);
+//		
+//	}
 	
 	private ArrayList<Room> generateRooms(int numRooms) {
 		ArrayList<Room> rooms = new ArrayList<Room>();
@@ -317,12 +328,15 @@ public class Level {
 		}
 		//System.out.println("Number of special Rooms: "+specialRooms.length);
 		tiles[specialRooms[0].getY()][specialRooms[0].getX()] = new TileStairs(specialRooms[0].getX(), specialRooms[0].getY());
-		entities.add(new EntityResourceStairs(specialRooms[0].getX()+.5,specialRooms[0].getY()+.5, 1));
+		stairsDown = new EntityResourceStairs(specialRooms[0].getX()+.5,specialRooms[0].getY()+.5, 1);
+		entities.add(stairsDown);
+		
 		
 		tiles[specialRooms[1].getY()][specialRooms[1].getX()] = new TileStairLanding(specialRooms[1].getX(), specialRooms[1].getY());
-		entities.add(new EntityResourceStairs(specialRooms[1].getX()+.5,specialRooms[1].getY()+.5, 0));
+		stairsUp = new EntityResourceStairs(specialRooms[1].getX()+.5,specialRooms[1].getY()+.5, 0)
+		entities.add(stairsUp);
 		
-		setStart(specialRooms[1].getX(), specialRooms[1].getY());
+//		setStart(specialRooms[1].getX(), specialRooms[1].getY());
 		
 		for (int i = 2; i < specialRooms.length; i++) {
 			tiles[specialRooms[i].getY()][specialRooms[i].getX()] = new TileChest(specialRooms[i].getX(), specialRooms[i].getY());

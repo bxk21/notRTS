@@ -39,12 +39,6 @@ public class GameManager {
 		loadLevel();
 	}
 	
-	public static void loadLevel(){
-		player.reset();
-		entities = level.getEntities();
-		entities.add(player);
-	}
-	
 	public static void loadLevel(boolean up){
 		if (up){
 			
@@ -59,14 +53,28 @@ public class GameManager {
 //				level = new Level(MAP_HEIGHT, MAP_WIDTH, currentLevel, currentLevel);
 //				loadLevel();
 //			}
-		} else if (currentLevel != 0){
+		} else {
+		    if (currentLevel == 0){
+		        // At first level. Cannot go back more.
+	        }
 			if (Main.IS_TESTING) {
 				System.out.println("Back a Level!");
 			}
 			currentLevel--;
+
 		}
 		level = new Level(MAP_HEIGHT, MAP_WIDTH, currentLevel);
-		loadLevel();
+		player.reset();
+		entities = level.getEntities();
+		
+		EntityResource landing;
+		if (up){
+		    landing = level.getStairsDown();//having gone up, now at top of stairs going down.
+		} else {
+		    landing = level.getStairsUp();
+		}
+		player.setLocation(landing.getX(), landing.getY());
+		entities.add(player);
 	}
 	
 	public static void tick(int time) {
