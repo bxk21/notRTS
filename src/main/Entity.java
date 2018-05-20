@@ -88,7 +88,7 @@ public abstract class Entity extends Matter {
 	public double[] attemptMove(double toX, double toY, double fromX, double fromY, int attempts) {
 		attempts++;
 		if(attempts>20){
-			System.err.println("Movement Failed: " + this);
+//			System.err.println("Movement Failed: " + this);
 			return new double[]{fromX, fromY};
 		}
 		if (flying){

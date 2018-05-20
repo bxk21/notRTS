@@ -59,7 +59,7 @@ public abstract class Action {
 		}
 		//Action
 		if (act(time)){
-			System.out.println("Action Finished " + this);
+//			System.out.println("Action Finished " + this);
 			onEnd();
 			return true;
 		}

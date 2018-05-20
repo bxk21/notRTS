@@ -4,26 +4,28 @@ import main.Entities.EntityResource;
 
 public class EntityResourceStairs extends EntityResource {
 	
+	private boolean direction;
+	
 	public EntityResourceStairs(int forward) {
 		super(1);
 	}
 	
-	public EntityResourceStairs(double x, double y, int forward) {
-		super(x, y, forward);
+	public EntityResourceStairs(double x, double y, boolean forward) {
+		super(x, y, 1);
 		
+		direction = forward;
 		
-		if (quantity > 0) {
+		if (direction) {
 			name = "Stairs Down";
 			setSprite("StairsDown.bmp");
-			efficiency = 1;
+			
 		} else {
 			name = "Stairs Up";
 			setSprite("StairsUp.bmp");
-			efficiency = 0;
 		}
 	}
 	
 	public boolean direction() {
-		return quantity > 0;
+		return direction;
 	}
 }

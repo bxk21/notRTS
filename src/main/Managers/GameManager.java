@@ -2,6 +2,7 @@ package main.Managers;
 
 
 import main.Entities.EntityPC;
+import main.Entities.EntityResource;
 import main.Entity;
 import main.Level;
 import main.Location;
@@ -23,25 +24,24 @@ public class GameManager {
 
 	public static final int BLOCK_SIZE = 1;
 	public static final double BLOCK_SIZE_HALF = BLOCK_SIZE/2;
-	public static final int MAP_WIDTH = 100;
-	public static final int MAP_HEIGHT = 100;
+	static final int MAP_WIDTH = 100;
+	static final int MAP_HEIGHT = 100;
 	
 	private static EntityPC player;
 	private static ArrayList<Entity> entities;//TODO: AutoSorting addEntity() method with getEntity(Class type)
 	private static ArrayList<Entity> nonEntities = new ArrayList<>();
 	public static Level level;
-	private static int currentLevel = 1;
+	private static int currentLevel = -1;
 	private static ArrayList<Entity> killQueue = new ArrayList<>();
 	
 	public GameManager() {
 		player = new EntityPC(-1, -1);
-		level = new Level(MAP_HEIGHT, MAP_WIDTH, currentLevel);
-		loadLevel();
+//		level = new Level(MAP_HEIGHT, MAP_WIDTH, currentLevel);
+		loadLevel(true);
 	}
 	
-	public static void loadLevel(boolean up){
-		if (up){
-			
+	public static void loadLevel(boolean forward){
+		if (forward){
 			if (Main.IS_TESTING) {
 				System.out.println("Next Level!");
 			}
@@ -55,7 +55,7 @@ public class GameManager {
 //			}
 		} else {
 		    if (currentLevel == 0){
-		        // At first level. Cannot go back more.
+		    	return;// At first level. Cannot go back more.
 	        }
 			if (Main.IS_TESTING) {
 				System.out.println("Back a Level!");
@@ -68,10 +68,10 @@ public class GameManager {
 		entities = level.getEntities();
 		
 		EntityResource landing;
-		if (up){
-		    landing = level.getStairsDown();//having gone up, now at top of stairs going down.
-		} else {
+		if (forward) {
 		    landing = level.getStairsUp();
+		} else {
+		    landing = level.getStairsDown();//having gone up, now at top of stairs going down.
 		}
 		player.setLocation(landing.getX(), landing.getY());
 		entities.add(player);

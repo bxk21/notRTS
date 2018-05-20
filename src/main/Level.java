@@ -1,6 +1,7 @@
 package main;
 
 import main.Entities.EntityCharger;
+import main.Entities.EntityResource;
 import main.Entities.Resources.EntityResourceChest;
 import main.Entities.Resources.EntityResourceStairs;
 import main.Managers.GameManager;
@@ -62,11 +63,11 @@ public class Level {
 		return seed.nextDouble();
 	}
 	
-	public Tile getStairsDown(){
+	public EntityResource getStairsDown(){
 	    return stairsDown;
     }
     
-    public Tile getStairsUp(){
+    public EntityResource getStairsUp(){
 	    return stairsUp;
     }
 
@@ -328,12 +329,12 @@ public class Level {
 		}
 		//System.out.println("Number of special Rooms: "+specialRooms.length);
 		tiles[specialRooms[0].getY()][specialRooms[0].getX()] = new TileStairs(specialRooms[0].getX(), specialRooms[0].getY());
-		stairsDown = new EntityResourceStairs(specialRooms[0].getX()+.5,specialRooms[0].getY()+.5, 1);
+		stairsDown = new EntityResourceStairs(specialRooms[0].getX()+.5,specialRooms[0].getY()+.5, true);
 		entities.add(stairsDown);
 		
 		
 		tiles[specialRooms[1].getY()][specialRooms[1].getX()] = new TileStairLanding(specialRooms[1].getX(), specialRooms[1].getY());
-		stairsUp = new EntityResourceStairs(specialRooms[1].getX()+.5,specialRooms[1].getY()+.5, 0)
+		stairsUp = new EntityResourceStairs(specialRooms[1].getX()+.5,specialRooms[1].getY()+.5, false);
 		entities.add(stairsUp);
 		
 //		setStart(specialRooms[1].getX(), specialRooms[1].getY());
@@ -344,7 +345,7 @@ public class Level {
 		}
 		
 		for (Room room : rooms) {
-			if (room == specialRooms[1]){
+			if (room == specialRooms[0] || room == specialRooms[1]){
 				continue;
 			}
 			int numMonsters = (int)(room.getSize() / 10 * Math.log(difficulty+3) * getRandom());

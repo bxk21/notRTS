@@ -134,7 +134,7 @@ public class Location{
 		return radius;
 	}
 	
-	protected void setLocation(double x, double y) {
+	public void setLocation(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
