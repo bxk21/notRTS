@@ -46,9 +46,11 @@ Input is taken in and written to a hashMap, (and double[] for mouse location), s
 
 ### World Seeds
 
+For testing purposes, every RNG roll is based off one seed. The seed can be seen and copied from the pause menu. The game can then be launched with that seed for reuse.
 
 
- 
+### Not Implemented Features
+
 I wanted to write the A* search algorithm for the AI, but I didn’t have time. The surrounding code for it is written in: path following, periodic rechecking of path (for moving goals), etc.
 
 ***
