@@ -55,6 +55,13 @@ For testing purposes, every RNG roll is based off one seed. The seed can be seen
 
 I wanted to write the A* search algorithm for the AI, but I didn’t have time. The surrounding code for it is written in: path following, periodic rechecking of path (for moving goals), etc.
 
+#### TODO:
+
+* Move input processing to separate class.
+* Create "Teams". Make resources team owned.
+* Implement loading premade maps
+*
+
 ***
 ## Changelog
 
