@@ -35,6 +35,8 @@ Actions can do perpetual things (with the act() method) or one time actions (wit
 
 All entities have resources that are handed to whatever entity killed it. Experience is written this way. All Chargers are simply spawned with 10 exp each, which the player collects on death.
 
+Chests are the "mineable" resource. The user gets close to it, "mines" for a second and obtains a standard amount of the resource from the "source". In this case, however, there's only one "chest" in the "source", so it disappears after use.
+
 ### Cooldowns
 
 Entities have Timings (implemented as cooldowns in EntityPC) that can prevent the Entity from doing the action again (from the period of “start” to “end”) or prevent all action (from the period of “inoperableStart” to “inoperableEnd”). The cooldowns are on BasicAttack (cooldown of ½ second) Dash (cooldown of 2 seconds) and Mine ( just half of a second so the user can’t doubletap the mine button and restart the process by accident).
@@ -46,10 +48,19 @@ Input is taken in and written to a hashMap, (and double[] for mouse location), s
 
 ### World Seeds
 
+For testing purposes, every RNG roll is based off one seed. The seed can be seen and copied from the pause menu. The game can then be launched with that seed for reuse.
 
 
- 
+### Not Implemented Features
+
 I wanted to write the A* search algorithm for the AI, but I didn’t have time. The surrounding code for it is written in: path following, periodic rechecking of path (for moving goals), etc.
+
+#### TODO:
+
+* Move input processing to separate class.
+* Create "Teams". Make resources team owned.
+* Implement loading premade maps
+*
 
 ***
 ## Changelog
