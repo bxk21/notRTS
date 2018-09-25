@@ -24,6 +24,10 @@ public class EntityProjectile extends Entity {
 		double xd = target.x - owner.x;
 		double yd = target.y - owner.y;
 		double d = Math.sqrt(xd*xd+yd*yd);
+		if (d == 0){//no distance
+			//kill self
+			actionQueue.clear();
+		}
 		double ratio = owner.getAttackRadius()/d;
 		double newXD = xd * ratio;
 		double newYD = yd * ratio;

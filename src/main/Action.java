@@ -69,7 +69,9 @@ public abstract class Action {
 		actor.updateSprite(timeLeft);
 		
 		if (timeLeft<=0){
-			System.out.println("Action Timed out " + this);
+			if (Main.IS_TESTING) {
+			    System.out.println("Action Timed out " + this);
+			}
 			onEnd();
 			return true;
 		}

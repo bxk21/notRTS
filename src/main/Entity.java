@@ -184,8 +184,6 @@ public abstract class Entity extends Matter {
 			}
 		}
 		
-		//TODO: Collision with other entities
-		
 		//Temporarily move entity for collision testing
 		double oldX = x;
 		double oldY = y;
